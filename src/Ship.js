@@ -31,9 +31,6 @@ class Ship {
     const indexOfNextPort = indexOfPreviousPort + 1
     const hasNextPort = indexOfNextPort < this.itinerary.ports.length
 
-    if (!hasNextPort) {
-      throw new Error("The ship has arrived at its final destination")
-    }
     this.currentPort = this.itinerary.ports.at(indexOfNextPort)
     this.currentPort.addShip(this)
   }
