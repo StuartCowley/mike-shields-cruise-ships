@@ -108,16 +108,37 @@ const ship = new Ship(itinerary)
 ```
 
 ##### Properties:
-- `itinerary`: The provided itinerary of ports
-- `currentPort`: The port at which the ship is currently docked
-- `previousPort`: The port at which the ship was previously docked
+- `itinerary`: The provided `itinerary` of ports
+- `currentPort`: The `port` at which the `ship` is currently docked
+- `previousPort`: The `port` at which the `ship` was previously docked
   
 ##### Methods: 
 - `setSail`:
-  - Removes `ship` from the current port 
+  - Removes `ship` from the `ships` array of the current `port`
   - Sets `previousPort` to be the value of `currentPort`
-  - Sets `currentPort`  to equal `null` 
+  - Sets `currentPort`  to equal `null`
+  ```js
+  const ship = new Ship(itinerary)
+
+  ship.previousPort // null
+  ship.currentPort // itinerary[0]
+  ship.currentPort.ports // [ship]
+
+  ship.setSail()
+
+  ship.previousPort // itinerary[0]
+  ship.previousPort.ports // []
+  ship.currentPort // null
+  ```
 
 - `dock`: 
-  - Adds `ship` to the next port in the itinerary
-  - Sets currentPort to be the next port in the itinerary
+  - Adds `ship` to the `ports` array of the next `port` in the `itinerary`
+  - Sets `currentPort` to be the next `port` in the  `itinerary`
+
+  ```js
+  // code continues from setSail code example above..
+  ship.dock()
+
+  ship.currentPort // ship.itinerary[1]
+  ship.currentPort.ports // [ship]
+  ```
